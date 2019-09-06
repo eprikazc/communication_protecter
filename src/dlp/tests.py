@@ -1,13 +1,4 @@
-import pytest
-
-from dlp.models import FilterRule
 from dlp.tasks import analyze
-
-
-@pytest.fixture
-def company_email_rule(db):
-    return FilterRule.objects.create(
-        name='Company email address', pattern='@company.com')
 
 
 def test_analyze_ok(company_email_rule):

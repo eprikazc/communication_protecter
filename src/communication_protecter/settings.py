@@ -19,9 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ex2&lc8gfp!+@&ty-erva_7fq#^@5zy7jr*=f#hhzi29o1!h2#'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -90,7 +87,10 @@ DATABASES = {
 }
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', 'ex2&lc8gfp!+@&ty-erva_7fq#^@5zy7jr*=f#hhzi29o1!h2#')
 CELERY_BROKER_URL = os.environ['BROKER_URL']
+SLACK_OAUTH_ACCESS_TOKEN = os.environ['SLACK_OAUTH_ACCESS_TOKEN']
 
 
 # Password validation

@@ -6,6 +6,8 @@ services:
       - 18000:8000
     command: wait-for-it db:3306 -- python manage.py runserver 0.0.0.0:8000
     env_file: ./src/.env_docker
+    environment:
+      - SLACK_OAUTH_ACCESS_TOKEN
     volumes: 
       - ./src/:/code
     networks: 
@@ -36,6 +38,8 @@ services:
     build: ./
     command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A communication_protecter.celery worker -l info
     env_file: ./src/.env_docker
+    environment:
+      - SLACK_OAUTH_ACCESS_TOKEN
     volumes: 
       - ./src/:/code
     networks: 
