@@ -1,0 +1,47 @@
+version: "3"
+services:
+  django:
+    build: ./
+    ports:
+      - 18000:8000
+    command: wait-for-it db:3306 -- python manage.py runserver 0.0.0.0:8000
+    env_file: ./src/.env_docker
+    volumes: 
+      - ./src/:/code
+    networks: 
+      - communication_protecter_app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+      - redis
+    restart: on-failure
+  db:
+    image: mysql:8
+    command:  --default-authentication-plugin=mysql_native_password
+    env_file: ./src/.env_docker
+    networks: 
+      - communication_protecter_app
+    ports:
+      - 13306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+  redis:
+    image: redis
+    ports:
+      - 16379:6379
+    networks: 
+      - communication_protecter_app
+  celery_worker:
+    build: ./
+    command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A communication_protecter.celery worker
+    env_file: ./src/.env_docker
+    volumes: 
+      - ./src/:/code
+    networks: 
+      - communication_protecter_app
+    depends_on:
+      - db
+      - redis
+networks:
+  communication_protecter_app:
