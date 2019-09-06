@@ -1,3 +1,4 @@
+import logging
 import re
 
 from celery import shared_task
@@ -12,4 +13,5 @@ def analyze(text):
     """
     for rule in FilterRule.objects.all():
         if re.search(rule.pattern, text):
+            logging.warning('Message is bad: "%s"' % text)
             return rule.id

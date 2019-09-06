@@ -34,7 +34,7 @@ services:
       - communication_protecter_app
   celery_worker:
     build: ./
-    command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A communication_protecter.celery worker
+    command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A communication_protecter.celery worker -l info
     env_file: ./src/.env_docker
     volumes: 
       - ./src/:/code
