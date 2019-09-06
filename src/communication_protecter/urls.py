@@ -19,6 +19,6 @@ from django.urls import path
 from slack_connector.views import slack_event_handler
 
 urlpatterns = [
-    path('slack-event', slack_event_handler),
+    path('', slack_event_handler),
     path('admin/', admin.site.urls),
 ]
