@@ -4,7 +4,7 @@ Project consists of database, redis, django development server and celery worker
 docker-compose up
 ```
 
-# Running tests
+# Running style check and tests
 Unittests are written with pytest. We can run them in django docker container (assuming that `docker-compose up` was run before):
 ```
 make
