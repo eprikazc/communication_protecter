@@ -1,0 +1,1 @@
+[{"model": "dlp.filterrule", "pk": 1, "fields": {"name": "Company email", "pattern": "@company.com", "description": ""}}]
