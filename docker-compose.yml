@@ -8,6 +8,7 @@ services:
     env_file: ./src/.env_docker
     environment:
       - SLACK_OAUTH_ACCESS_TOKEN
+      - SLACK_SIGNING_SECRET
     volumes: 
       - ./src/:/code
     networks: 
@@ -40,6 +41,7 @@ services:
     env_file: ./src/.env_docker
     environment:
       - SLACK_OAUTH_ACCESS_TOKEN
+      - SLACK_SIGNING_SECRET
     volumes: 
       - ./src/:/code
     networks: 

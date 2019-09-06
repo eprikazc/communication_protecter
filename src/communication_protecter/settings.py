@@ -91,7 +91,7 @@ DATABASES = {
 SECRET_KEY = os.environ.get('SECRET_KEY', 'ex2&lc8gfp!+@&ty-erva_7fq#^@5zy7jr*=f#hhzi29o1!h2#')
 CELERY_BROKER_URL = os.environ['BROKER_URL']
 SLACK_OAUTH_ACCESS_TOKEN = os.environ['SLACK_OAUTH_ACCESS_TOKEN']
-
+SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
