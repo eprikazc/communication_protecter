@@ -28,8 +28,7 @@ docker-compose exec django pytest dlp/tests.py::test_analyze_ok -v
 # Running with real slack account
 - Install, grok and setup tunnel: `ngrok http 18000`. In console output notice forwarding URL, it should look like `https://asdasdwe.ngrok.io`.
 - Create slack account. Add following permissions/scopes: `channels:history, channels:read, chat:write:user, im:history, im:read`.
-Enable events and set ngrok URL from step#1: `https://asdasdwe.ngrok.io/slack-event`.
-NOTE: we added `/slack-event` to the URL!
+- Enable slack events and set ngrok URL from step#1 (slack will send eventst to this URL): `https://asdasdwe.ngrok.io/slack-event`. **NOTE**: we added `/slack-event` to the URL!
 - Make sure `SLACK_OAUTH_ACCESS_TOKEN` and `SLACK_SIGNING_SECRET` have correct values. Look them up in web interface. Signing secret is on `Basic Information` page. oAuth access token is on `OAuth & Permissions` page. Now stop terminal with `docker-compose`, export correct values of variables and run `docker-compose up` again.
 - Write message with following content in slack:
 > This is bad message, because it contains companies email address - user@company.com
