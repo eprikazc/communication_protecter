@@ -18,3 +18,7 @@ fill-db:
 	${RUN_CMD} python manage.py migrate
 	${RUN_CMD} python manage.py createsuperuser
 	${RUN_CMD} python manage.py loaddata dlp/fixtures/filter_rules.json
+
+clean:
+	sudo find src/ -name "*pyc" -delete
+	sudo find src/ -name "__pycache__" -delete
