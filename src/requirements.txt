@@ -7,6 +7,7 @@ requests==2.22.0
 # development and testing
 pytest==5.1.2
 pytest-django==3.5.1
+pytest-mock==1.10.4
 watchdog==0.9.0
 flake8==3.7.8
 ipdb==0.12.2
