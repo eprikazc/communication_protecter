@@ -3,7 +3,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from slack_connector.tasks import process_slack_message
+from slack_connector.tasks import get_process_slack_message_chain
 
 
 @csrf_exempt
@@ -19,5 +19,5 @@ def slack_event_handler(request):
     except (TypeError, KeyError):
         return JsonResponse({'status': 'Cannot get event type'})
     if event_type == 'message':
-        process_slack_message(payload)
+        get_process_slack_message_chain(payload)()
     return JsonResponse({})

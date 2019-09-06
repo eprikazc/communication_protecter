@@ -4,12 +4,12 @@ from slack_connector.models import DLPDetection
 from dlp.tasks import analyze
 
 
-def process_slack_message(event_source):
+def get_process_slack_message_chain(event_source):
     text = event_source['event']['text']
     return chain(
         analyze.s(text),
         handle_dlp_result.s(text, event_source),
-    )()
+    )
 
 
 @shared_task
