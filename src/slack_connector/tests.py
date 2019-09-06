@@ -2,7 +2,8 @@ import pytest
 
 from dlp.models import FilterRule
 from slack_connector.models import DLPDetection
-from slack_connector.tasks import get_process_slack_message_chain, handle_dlp_result
+from slack_connector.tasks import (
+    get_process_slack_message_chain, handle_dlp_result)
 
 
 @pytest.fixture

@@ -1,7 +1,10 @@
 celery==4.3.0
 Django==2.2.5
 mysqlclient==1.4.4
+redis==3.3.8
+
+# development and testing
 pytest==5.1.2
 pytest-django==3.5.1
-redis==3.3.8
 watchdog==0.9.0
+flake8==3.7.8
