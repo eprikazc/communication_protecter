@@ -12,6 +12,8 @@ def slack_event_handler(request):
         payload = json.loads(request.body.decode('utf-8'))
     except json.JSONDecodeError:
         return JsonResponse({'status': 'Not a valid JSON'})
+    if 'challenge' in payload:
+        return JsonResponse({'challenge': payload['challenge']})
     try:
         event_type = payload['event']['type']
     except (TypeError, KeyError):
